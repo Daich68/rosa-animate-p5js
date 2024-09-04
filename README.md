@@ -6,7 +6,7 @@ rosa-animate-p5js is a flexibly customizable rose-shaped typography animation th
 
 <img src="https://habrastorage.org/webt/nv/rt/sk/nvrtsk8pabg4miync1qwn6pt_5y.jpeg" />
 
-Features
+# Features
 
     🌸 Customizable Text: Change the text displayed in the animation with ease.
     🎨 Color & Style: Modify colors, stroke weight, and other styling properties to match your project's theme.
