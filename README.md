@@ -3,6 +3,9 @@
 Overview
 
 rosa-animate-p5js is a flexibly customizable rose-shaped typography animation that you can easily integrate into your projects. Built with the p5.js library, this animation allows you to create mesmerizing and elegant text animations in the shape of a rose. Perfect for adding a unique visual touch to your websites, presentations, or creative projects.
+
+![Uploading STG_shine.jpg…]()
+
 Features
 
     🌸 Customizable Text: Change the text displayed in the animation with ease.
