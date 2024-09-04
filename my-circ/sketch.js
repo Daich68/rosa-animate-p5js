@@ -87,6 +87,42 @@ function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
+function updateInnerRad(value) {
+    innerRad = parseFloat(value);
+    coreTap.innerRad = innerRad; // Обновляем значение в объекте Tapestry
+    coreTap.setText(); // Перезапускаем текст с новым радиусом
+}
+
+function updateTextSize(element) {
+    pgTextSize = int(element.value);
+    document.getElementById("textSizeValue").innerText = pgTextSize;
+    coreTap.setText();
+}
+
+function updateLineCount(element) {
+    coreTap.lineCount = int(element.value);
+    document.getElementById("lineCountValue").innerText = coreTap.lineCount;
+    coreTap.setText();
+}
+
+function updateLetterSpace(element) {
+    coreTap.letterSpacer = float(element.value);
+    document.getElementById("letterSpaceValue").innerText = coreTap.letterSpacer;
+    coreTap.setText();
+}
+
+function updateSpacing(element) {
+    coreTap.lineSpace = float(element.value);
+    document.getElementById("spacingValue").innerText = coreTap.lineSpace;
+    coreTap.setText();
+}
+
+function updateOscCount(element) {
+    coreTap.oscCount = int(element.value);
+    document.getElementById("oscCountValue").innerText = coreTap.oscCount;
+    coreTap.setText();
+}
+
 function updateText() {
     inputText = document.getElementById("text0").value;
     coreTap.setText();
@@ -410,34 +446,27 @@ class Tapestry {
     constructor() {
         this.lineCount = 36;
         this.oscCount = 5;
-
         this.innerRad = 150;
         this.outerRad = 700;
-
-        this.lineSpace = 0.8;
+        this.lineSpace = 0.8; // Теперь это межстрочное расстояние
+        this.letterSpacer = 1.0; // Интервал между буквами
 
         this.lineRad = [];
         this.lineAng = [];
         this.lineAngStart = [];
         this.lineAngMax = [];
-
         this.lineFullAng = [];
-
         this.nDelay = -1;
         this.mDelay = -2;
         this.animWindow = 90;
         this.pauseWindow = 70;
         this.ticker = [];
         this.scrubDelay = [];
-
         this.centerYtarget = 0;
         this.centerY = [];
-
         this.ranRotTarget = [];
         this.ranRot = [];
-
         this.justifyMode = 3;
-        this.letterSpacer = 1.0;
 
         this.setText();
     }
