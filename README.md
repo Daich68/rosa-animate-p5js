@@ -1,10 +1,10 @@
 🌹 rosa-animate-p5js
 
-Overview
+# Overview
 
 rosa-animate-p5js is a flexibly customizable rose-shaped typography animation that you can easily integrate into your projects. Built with the p5.js library, this animation allows you to create mesmerizing and elegant text animations in the shape of a rose. Perfect for adding a unique visual touch to your websites, presentations, or creative projects.
 
-![Uploading STG_shine.jpg…]()
+<img src="https://habrastorage.org/webt/nv/rt/sk/nvrtsk8pabg4miync1qwn6pt_5y.jpeg" />
 
 Features
 
@@ -14,10 +14,7 @@ Features
     🔄 Animation Control: Easily control the speed and direction of the animation.
     📦 Reusable: Can be reused in various web and creative projects.
 
-Demo
-
-Check out a live demo of the animation here.
-Installation
+# Installation
 
 To get started with rosa-animate-p5js, clone the repository and include the necessary files in your project.
 
@@ -30,10 +27,8 @@ Include the p5.js library and the rosa-animate.js script in your HTML file:
 html
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-<script src="path-to-your/rosa-animate.js"></script>
 
-
-Customization
+# Customization
 
 You can customize the following parameters to make the animation fit your needs:
 
@@ -43,17 +38,17 @@ You can customize the following parameters to make the animation fit your needs:
     size: Define the size of the rose animation.
     speed: Control the speed of the animation.
 
-Requirements
+# Requirements
 
     p5.js library (v1.4.0 or later)
 
-Contributing
+# Contributing
 
 Contributions are welcome! If you have ideas for improving this project or want to fix a bug, feel free to fork the repository and submit a pull request.
 License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-Acknowledgments
+# Acknowledgments
 
 Special thanks to the p5.js community for their awesome resources and support.
