@@ -53,6 +53,7 @@ Contributions are welcome! If you have ideas for improving this project or want 
 License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
 Acknowledgments
 
 Special thanks to the p5.js community for their awesome resources and support.
