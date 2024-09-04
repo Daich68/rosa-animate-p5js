@@ -42,6 +42,13 @@
             <option value="RiformaLL-Bold">RiformaLL-Bold</option>
             <option value="RiformaLL-Regular">RiformaLL-Regular</option>
         </select>
+
+        <label for="backgroundColorPicker">Background Color:</label>
+        <input type="color" id="backgroundColorPicker" value="#000000" oninput="updateBkgdColor(event)">
+        
+        <label for="textColorPicker">Text Color:</label>
+        <input type="color" id="textColorPicker" value="#ffffff" oninput="updateForeColor(event)">        
+
     </div>
     
     <!-- Подключаем библиотеку p5.js и наш скетч -->
