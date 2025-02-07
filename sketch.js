@@ -1,9 +1,9 @@
 let bkgdColor, foreColor;
 let tFont = {};
 let pgTextSize = 22;
-let inputText = "rosamundi";
+let inputText = "rosamundi digest";
 let coreTap;
-let currentFont = "RiformaLL-Bold"; // Устанавливаем начальный шрифт
+let currentFont = "RiformaLL-Bold";
 
 let motionType = 0;
 let accelType = 3;
@@ -19,12 +19,11 @@ let exportSVGon = false;
 let isRecording = false;
 let mediaRecorder;
 let recordedChunks = [];
-let recordDuration = 20 * 30; // 20 секунд при 30 кадрах в секунду
+let recordDuration = 20 * 30;
 let frameCountRecord = 0;
 let canvasStream;
 
 function preload() {
-    // Загружаем все шрифты
     tFont["EditorialNew-Regular"] = loadFont("resources/EditorialNew-Regular.otf");
     tFont["Inter-Regular"] = loadFont("resources/Inter-Regular.ttf");
     tFont["NeueMontreal-Bold"] = loadFont("resources/NeueMontreal-Bold.ttf");
@@ -35,26 +34,22 @@ function preload() {
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-
     bkgdColor = color('#000000');
     foreColor = color('#ffffff');
-
     frameRate(30);
     noSmooth();
     textureMode(NORMAL);
     rectMode(CENTER);
 
-    document.getElementById("text0").value = inputText;
-
+    // Initialize Tapestry with default values
     coreTap = new Tapestry();
-
-    // Настройка для записи анимации
-    canvasStream = canvas.captureStream(30); // Захват потока с канваса
+    
+    // Setup for recording
+    canvasStream = canvas.captureStream(30);
     mediaRecorder = new MediaRecorder(canvasStream);
     mediaRecorder.ondataavailable = handleDataAvailable;
     mediaRecorder.onstop = handleStop;
 }
-
 
 function draw() {
     clear();
@@ -65,7 +60,9 @@ function draw() {
     if (spinOn) {
         rotate(frameCount * -0.001);
     }
-    coreTap.run();
+    if (coreTap) {
+        coreTap.run();
+    }
     pop();
 
     if (exportSVGon) {
@@ -88,66 +85,81 @@ function windowResized() {
 }
 
 function updateInnerRad(value) {
-    innerRad = parseFloat(value);
-    coreTap.innerRad = innerRad; // Обновляем значение в объекте Tapestry
-    coreTap.setText(); // Перезапускаем текст с новым радиусом
+    if (coreTap) {
+        coreTap.innerRad = parseFloat(value);
+        coreTap.setText();
+    }
 }
 
 function updateTextSize(element) {
-    pgTextSize = int(element.value);
-    document.getElementById("textSizeValue").innerText = pgTextSize;
-    coreTap.setText();
+    if (element && element.value !== undefined && coreTap) {
+        pgTextSize = int(element.value);
+        coreTap.setText();
+    }
 }
 
 function updateLineCount(element) {
-    coreTap.lineCount = int(element.value);
-    document.getElementById("lineCountValue").innerText = coreTap.lineCount;
-    coreTap.setText();
+    if (element && element.value !== undefined && coreTap) {
+        coreTap.lineCount = int(element.value);
+        coreTap.setText();
+    }
 }
 
 function updateLetterSpace(element) {
-    coreTap.letterSpacer = float(element.value);
-    document.getElementById("letterSpaceValue").innerText = coreTap.letterSpacer;
-    coreTap.setText();
+    if (element && element.value !== undefined && coreTap) {
+        coreTap.letterSpacer = float(element.value);
+        coreTap.setText();
+    }
 }
 
 function updateSpacing(element) {
-    coreTap.lineSpace = float(element.value);
-    document.getElementById("spacingValue").innerText = coreTap.lineSpace;
-    coreTap.setText();
+    if (element && element.value !== undefined && coreTap) {
+        coreTap.lineSpace = float(element.value);
+        coreTap.setText();
+    }
 }
 
 function updateOscCount(element) {
-    coreTap.oscCount = int(element.value);
-    document.getElementById("oscCountValue").innerText = coreTap.oscCount;
-    coreTap.setText();
+    if (element && element.value !== undefined && coreTap) {
+        coreTap.oscCount = int(element.value);
+        coreTap.setText();
+    }
 }
 
 function updateText() {
-    inputText = document.getElementById("text0").value;
-    coreTap.setText();
+    if (coreTap) {
+        const textInput = document.getElementById("text0");
+        if (textInput) {
+            inputText = textInput.value;
+            coreTap.setText();
+        }
+    }
 }
 
 function updateFont() {
-    const fontSelect = document.getElementById("fontSelector");
-    currentFont = fontSelect.value;
-    coreTap.setText(); // Обновляем текст для применения нового шрифта
+    if (coreTap) {
+        coreTap.setText();
+    }
 }
 
 function updateBkgdColor(event) {
-    bkgdColor = color(event.target.value);
+    if (event && event.target && event.target.value) {
+        bkgdColor = color(event.target.value);
+    }
 }
 
 function updateForeColor(event) {
-    foreColor = color(event.target.value);
+    if (event && event.target && event.target.value) {
+        foreColor = color(event.target.value);
+    }
 }
 
 function updateMotionType() {
-    motionType = int(document.getElementById("motionType").value);
+    // motionType is updated directly from panel.js
 }
 
 function updateAccelType() {
-    accelType = int(document.getElementById("accelType").value);
+    // accelType is updated directly from panel.js
 }
 
 function toggleSpin() {
@@ -160,7 +172,7 @@ function exportSVG() {
 
 function startRecording() {
     if (!isRecording) {
-        recordedChunks = []; // Очистка предыдущих записей
+        recordedChunks = [];
         mediaRecorder.start();
         frameCountRecord = 0;
         isRecording = true;
@@ -448,8 +460,8 @@ class Tapestry {
         this.oscCount = 5;
         this.innerRad = 150;
         this.outerRad = 700;
-        this.lineSpace = 0.8; // Теперь это межстрочное расстояние
-        this.letterSpacer = 1.0; // Интервал между буквами
+        this.lineSpace = 0.8; 
+        this.letterSpacer = 1.0; 
 
         this.lineRad = [];
         this.lineAng = [];
